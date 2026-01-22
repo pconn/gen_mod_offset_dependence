@@ -60,6 +60,10 @@
       pred_turb <- predict(turb_mod,newdata=predgrid.strat,type="response")
       cor(pred_turb,pred_mgcv)  
       
+      #note the above correlations can't really be trusted! (as pointed out
+      #by David Miller)
+      
+      
       #fit DSM with H-T responses
       gam.dat22$ht = gam.dat22$seg.ind/gam.dat22$ddf.pred
       predgrid.strat$area=predgrid.strat$a.p

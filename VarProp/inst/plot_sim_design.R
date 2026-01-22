@@ -60,7 +60,8 @@ plot_N_map_xy<-function(N,XY,leg.title="Abundance",my_color="blue"){
   Abundance=N
   Cur.df=cbind(data.frame(x=XY[,1],y=XY[,2],Abundance))
   colnames(Cur.df)=c("x","y","Abundance")
-  tmp.theme=theme(axis.ticks = element_blank(), axis.text = element_blank())
+  #tmp.theme=theme(axis.ticks = element_blank(), axis.text = element_blank(), theme_void())
+  tmp.theme=theme_void()
   if(my_color=="red")p1=ggplot(Cur.df)+aes(x,y,fill=Abundance)+geom_raster()+tmp.theme+scale_fill_gradient(low="white",high=muted("red"),name=leg.title)
   if(my_color=="blue")p1=ggplot(Cur.df)+aes(x,y,fill=Abundance)+geom_raster()+tmp.theme+scale_fill_gradient(low="white",high=muted("blue"),name=leg.title)
   if(my_color=="viridis")p1=ggplot(Cur.df)+aes(x,y,fill=Abundance)+geom_raster()+tmp.theme+scale_fill_viridis(name=leg.title)
@@ -84,7 +85,10 @@ Pplot_df = data.frame("Distance"=rep(Dists,3),
                       "Type"=rep(c("low","medium","high"),each=101)
                       )
 Pplot_df$Type = factor(Pplot_df$Type,levels=c("high","medium","low"))
-Pplot = ggplot(Pplot_df)+geom_line(aes(x=Distance,y=p,color=Type),size=1.2)
+Pplot = ggplot(Pplot_df)+geom_line(aes(x=Distance,y=p,color=Type),size=1.2)+theme_void()+
+  annotate("text", x=0.2, y=0.4, label= "p=0.38") + 
+  annotate("text", x=0.65, y=0.5, label= "p=0.77") + 
+  annotate("text", x=0.87, y=0.75, label= "p=0.95") 
 
 
 #Counts plot
