@@ -119,14 +119,6 @@ for(isim in 1:n_sim){
   wts_pinv <- 1/(pred_det)
   wts_pinv = wts_pinv/mean(wts_pinv)  #make weights sum to n
 
-# show previous bug in prediction grid
-# plotseg <- segdata
-# plotseg$xmin <- plotseg$x - plotseg$Effort/2
-# plotseg$xmax <- plotseg$x + plotseg$Effort/2
-# plotseg$ymin <- plotseg$y - plotseg$Effort/2
-# plotseg$ymax <- plotseg$y + plotseg$Effort/2
-# 
-# ggplot(plotseg) +
 #  geom_point(aes(x=x, y=y)) +
 #  geom_segment(aes(x=xmin, xend=xmax, y=y)) +
 #  geom_segment(aes(y=ymin, yend=ymax, x=x)) +
@@ -413,12 +405,15 @@ ggplot(data=gam_df, aes(x=Cor, y=Bias))+
   scale_fill_viridis_d() +
   scale_color_viridis_d()
 
-ggplot(data=gam_df, aes(x=Cor, y=CV))+
-  geom_smooth(aes(colour=Procedure, fill=Procedure),
+
+# CV
+ggplot(gam_df)+
+  geom_smooth(aes(x=Cor, y=CV, group=Procedure,
+                  colour=Procedure, fill=Procedure),
               method="gam", formula=y~s(x, k=4), se=TRUE,
-              size=1.5, alpha=0.25)+
-  geom_point() +
-  facet_wrap(~Procedure) +
+              size=1.5, alpha=0.5)+
   theme_minimal() +
   scale_fill_viridis_d() +
   scale_color_viridis_d()
+
+
