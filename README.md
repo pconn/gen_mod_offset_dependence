@@ -9,6 +9,6 @@ This code is associated with the paper, "Dependence between effort offsets and p
 in generalized models for count data: spatial models of animal abundance"
 by P.B. Conn and M.C. Ferguson (in revision at Environmetrics).
 
-The Poisson glm simulation study can be replicated vi athe R script, /inst/sim_pois_exposure.R
+The Poisson glm simulation study can be replicated via the R script, /inst/sim_pois_exposure.R
 The DSM simulation study can be replicated via the R script, /inst/sim_study.R
 The beluga analysis can be replicated via the R script /inst/xy_tw_DSM_2022.R
